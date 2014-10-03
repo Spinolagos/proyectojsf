@@ -36,7 +36,9 @@ public class PeliculaBeans {
      
     private static Pelicula pelicula;    
     private static List<Pelicula> lista;
+    private static List<Director> lista2;
     private static boolean edicion;
+    
     private HtmlDataTable tabla;
      private HtmlDataTable tabla2;
     /*datos de conecciones*/
@@ -49,8 +51,11 @@ public class PeliculaBeans {
      * Creates a new instance of PeliculaBeans2
      */
     public PeliculaBeans() {
-          if (lista == null) {
+            if (lista == null) {
             lista = new ArrayList();
+        }
+          if (lista2 == null) {
+            lista2 = new ArrayList();
         }
     }
 
@@ -126,14 +131,45 @@ public class PeliculaBeans {
     public void setTabla2(HtmlDataTable tabla2) {
         this.tabla2 = tabla2;
     }
+
+    public List<Director> getLista2() {
+        return lista2;
+    }
+
+    public void setLista2(List<Director> lista2) {
+        PeliculaBeans.lista2 = lista2;
+    }
+    
+    public void VerD() {
+           session.close();
+           session = HibernateUtil.getSessionFactory().openSession();
+           Transaction t = null;
+
+        try {
+           
+            String consulta = "from Director";
+            Query query = session.createQuery(consulta);
+            lista2 = query.list();
+
+        } catch (HibernateException ex) {
+            if (t != null) {
+                t.rollback();
+            }
+        } finally {
+            session.flush();
+            session.close();
+        }
+    }
+    
     
     
     public void Ver() {
        
+           session = HibernateUtil.getSessionFactory().openSession();
            Transaction t = null;
 
         try {
-            t = session.beginTransaction();
+            
             String consulta = "from Pelicula";
             Query query = session.createQuery(consulta);
             lista = query.list();
@@ -145,37 +181,42 @@ public class PeliculaBeans {
         } finally {
             session.flush();
             session.close();
-        }
+        }  
+    }
+    
+      public String agregar(){
+        Director elegido = (Director) this.getTabla2().getRowData();
+        
+        this.setDrId(elegido.getDrId());
+        lista2.clear();
+        lista2.add(elegido);
+            
+        return "pelicula.xhtml";
     }
      
     
     public String enviar() {
-          
         Director d = new Director();
         Pelicula p = new Pelicula();
+        for(Director list : lista2)
+        {
+            d.setDrId(list.getDrId());
+        }
         
-        d.setDrId(this.getDrId());
-        
+        p.setDirector(d);
         p.setPlNombre(this.getPlNombre());
         p.setPlYear(this.getPlYear());
-        p.setDirector(d);
-        this.setPelicula(p);
         
+        this.setPelicula(p);
 
         if (!edicion) {
             session.save(this.getPelicula());
             transaction.commit();
-        } else {
-            Transaction t = null;
-            session = HibernateUtil.getSessionFactory().openSession();
-            t = session.beginTransaction();
-            session.update(pelicula);
-            t.commit();
-            edicion = false;
         }
-       Ver();
+        Ver();
         return "peliculaLista.xhtml";
     } 
+     
     
      public String modificar() {
         

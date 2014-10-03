@@ -6,6 +6,36 @@
    <h:head>
         <title>Facelet Title</title>
     </h:head>
+            <h:form>
+            <h:dataTable border="1" 
+                         value="#{peliculaBeans.lista2}" 
+                         var="elemento" 
+                         binding="#{peliculaBeans.tabla2}" >
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="id"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.drId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.drNombre}"/>
+                </h:column> 
+                 <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Opciones"></h:outputText>
+                    </f:facet>           
+                     <h:commandLink value="Agregar Pelicula"  action="#{peliculaBeans.agregar}" />
+                     
+                </h:column>
+            </h:dataTable>    
+        </h:form>
+      <h:form> 
+          <h:commandButton value="Ver" action="#{peliculaBeans.VerD()}"/>
+          <h:commandLink value="Volver"  action="#{peliculaBeans.volver()}" />
+        </h:form> 
         <h:form>
 
             <h:messages errorStyle="color:red"></h:messages>
@@ -14,6 +44,7 @@
                 <h:outputText value="director id"/>
                 <h:inputText title="ingrese id director" 
                              id="director" 
+                             disabled="true"
                              required="true"
                              label="El id director"
                              requiredMessage="Debe ingresar El id director" 

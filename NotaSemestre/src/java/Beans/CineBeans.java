@@ -35,9 +35,9 @@ public class CineBeans {
      
     private static Cine cine;
     private static List<Cine> lista;
-    private static List<Ciudad> lista2;
-    
+    private static List<Ciudad> lista2;    
     private static boolean edicion;
+    
     private HtmlDataTable tabla;
     private HtmlDataTable tabla2;
     /*datos de conecciones*/
