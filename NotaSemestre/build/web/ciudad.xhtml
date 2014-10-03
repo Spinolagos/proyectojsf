@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ciudad</title>
+    </h:head>
+    Ingreso de Ciudad
+    <h:body>
+        <h:form>
+
+            <h:messages errorStyle="color:red"></h:messages>
+            <h:panelGrid columns="2" border="0">
+
+                <h:outputText value="Ciudad"/> 
+                <h:inputText title="ingrese Ciudad" 
+                             id="ciudad"  
+                             required="true"
+                             label="La Ciudad"
+                             requiredMessage="Debe ingresar una ciudad" 
+                             value="#{ciudadBeans.cdNombre}">
+                    <f:validateLength minimum="1"/>  
+
+                </h:inputText>   
+
+                <h:outputText value="Region"/>
+                <h:inputText title="ingrese region" 
+                             id="monto"
+                             required="true"
+                             label="la region"
+                             requiredMessage="Debe ingresar region" 
+                             value="#{ciudadBeans.cdRegion}">
+                    <f:validateLongRange minimum="1" maximum="15"/>       
+                </h:inputText>   
+                <h:commandButton value="Enviar" action="#{ciudadBeans.enviar()}"/>               
+            </h:panelGrid>           
+        </h:form>
+         <h:form> 
+            <h:panelGrid columns="3" border="2"> 
+             <h:commandButton value="Limpiar" action="#{ciudadBeans.limpiar()}"/>
+             <h:outputText value=" "/>
+              <h:commandButton value="Cancelar Edicion" action="#{ciudadBeans.cancelarModificar()}"/>
+            </h:panelGrid> 
+        </h:form>
+        <h:form> 
+            <h:panelGrid columns="3" border="2"> 
+            <h:commandButton value="Volver" action="#{ciudadBeans.volver()}"/>
+            <h:outputText value=" "/>
+            <h:commandButton value="Lista" action="#{ciudadBeans.listita()}"/>
+            </h:panelGrid> 
+        </h:form> 
+    </h:body>    
+</html>
+

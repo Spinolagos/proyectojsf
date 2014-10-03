@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+     Ingreso de Actores
+    <h:body>
+        <h:form>
+
+            <h:messages errorStyle="color:red"></h:messages>
+            <h:panelGrid columns="2" border="0">
+
+                <h:outputText value="Actor"/> 
+                <h:inputText title="ingrese Nombre Actor: " 
+                             id="actor"  
+                             required="true"
+                             label="El Actor"
+                             requiredMessage="Debe ingresar un actor" 
+                             value="#{actorBeans.acNombre}">
+                     <f:validateLength minimum="1"/>       
+                </h:inputText>   
+                <h:commandButton value="Enviar" action="#{actorBeans.enviar()}"/>
+              
+                
+            </h:panelGrid>           
+        </h:form> 
+          <h:form> 
+            <h:panelGrid columns="3" border="2"> 
+             <h:commandButton value="Limpiar" action="#{actorBeans.limpiar()}"/>
+              <h:outputText value=" "/>
+             <h:commandButton value="Cancelar Edicion" action="#{actorBeans.cancelarModificar()}"/>
+            </h:panelGrid> 
+        </h:form>
+        <h:form> 
+            <h:panelGrid columns="3" border="2"> 
+            <h:commandButton value="Volver" action="#{actorBeans.volver()}"/>
+            <h:outputText value=" "/>
+            <h:commandButton value="Lista" action="#{actorBeans.listita()}"/>
+            </h:panelGrid> 
+        </h:form> 
+    </h:body>    
+</html>
+

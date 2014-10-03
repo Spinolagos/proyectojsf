@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-sep-2014 16:43:37 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Clases.Ciudad" table="ciudad" catalog="pro">
+        <id name="cdId" type="java.lang.Integer">
+            <column name="cd_id" />
+            <generator class="identity" />
+        </id>
+        <property name="cdNombre" type="string">
+            <column name="cd_nombre" length="30" />
+        </property>
+        <property name="cdRegion" type="java.lang.Integer">
+            <column name="cd_region" />
+        </property>
+        <set name="cines" table="cine" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CIUDAD_cd_id" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Cine" />
+        </set>
+    </class>
+</hibernate-mapping>

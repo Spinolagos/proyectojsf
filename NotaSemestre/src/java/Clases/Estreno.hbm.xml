@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-sep-2014 16:43:37 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Clases.Estreno" table="estreno" catalog="pro">
+        <composite-id name="id" class="Clases.EstrenoId">
+            <key-property name="peliculaPlId" type="int">
+                <column name="PELICULA_pl_id" />
+            </key-property>
+            <key-property name="cineCnId" type="int">
+                <column name="CINE_cn_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="cine" class="Clases.Cine" update="false" insert="false" fetch="select">
+            <column name="CINE_cn_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pelicula" class="Clases.Pelicula" update="false" insert="false" fetch="select">
+            <column name="PELICULA_pl_id" not-null="true" />
+        </many-to-one>
+        <property name="esAsistentes" type="java.lang.Integer">
+            <column name="es_asistentes" />
+        </property>
+        <property name="esFecha" type="date">
+            <column name="es_fecha" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

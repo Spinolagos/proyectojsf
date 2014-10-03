@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+        <h:form>
+
+            <h:messages errorStyle="color:red"></h:messages>
+            <h:panelGrid columns="2" border="0">
+                
+                <h:outputText value="director id"/>
+                <h:inputText title="ingrese id director" 
+                             id="director" 
+                             required="true"
+                             label="El id director"
+                             requiredMessage="Debe ingresar El id director" 
+                             value="#{peliculaBeans.drId}">
+                    <f:validateLength minimum="1"/>       
+                </h:inputText>   
+                
+                <h:outputText value="pelicula"/>
+                <h:inputText title="ingrese pelicula" 
+                             id="peli" 
+                             required="true"
+                             label="El pelicula"
+                             requiredMessage="Debe ingresar pelicula" 
+                             value="#{peliculaBeans.plNombre}">
+                    <f:validateLength minimum="1"/>       
+                </h:inputText>   
+
+                <h:outputText value="year"/>
+                <h:inputText title="ingrese year" 
+                             id="year"
+                             required="true"
+                             label="El year"
+                             requiredMessage="Debe ingresar year" 
+                             value="#{peliculaBeans.plYear}">
+                    <f:validateLongRange minimum="1000" maximum="2015"/>       
+                </h:inputText>  
+
+                <h:commandButton value="Enviar" action="#{peliculaBeans.enviar()}"/>
+              
+            </h:panelGrid>
+        </h:form>  
+</html>

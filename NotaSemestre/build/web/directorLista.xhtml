@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+     <h:body>
+        <h:form>
+            
+            <h:dataTable border="1" 
+                         value="#{directorBeans.lista}" 
+                         var="elemento" 
+                         binding="#{directorBeans.tabla}" >
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="id"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.drId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.drNombre}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Edad"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.drEdad}"/>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Opciones"></h:outputText>
+                    </f:facet>           
+                     <h:commandLink value="Modificar"  action="#{directorBeans.modificar()}" />
+                </h:column>
+            </h:dataTable>    
+        </h:form>
+         <h:form> 
+             <h:commandButton value="Volver" action="#{directorBeans.volver()}"/>
+
+        </h:form> 
+    </h:body>
+</html>

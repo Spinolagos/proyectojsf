@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-sep-2014 16:43:37 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Clases.Pelicula" table="pelicula" catalog="pro">
+        <id name="plId" type="java.lang.Integer">
+            <column name="pl_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="director" class="Clases.Director" fetch="select">
+            <column name="DIRECTOR_dr_id" not-null="true" />
+        </many-to-one>
+        <property name="plNombre" type="string">
+            <column name="pl_nombre" length="45" />
+        </property>
+        <property name="plYear" type="java.lang.Integer">
+            <column name="pl_year" />
+        </property>
+        <set name="elencos" table="elenco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PELICULA_pl_id" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Elenco" />
+        </set>
+        <set name="estrenos" table="estreno" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PELICULA_pl_id" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Estreno" />
+        </set>
+    </class>
+</hibernate-mapping>

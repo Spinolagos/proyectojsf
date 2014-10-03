@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-sep-2014 16:43:37 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Clases.Actor" table="actor" catalog="pro">
+        <id name="acId" type="java.lang.Integer">
+            <column name="ac_id" />
+            <generator class="identity" />
+        </id>
+        <property name="acNombre" type="string">
+            <column name="ac_nombre" length="45" />
+        </property>
+        <set name="elencos" table="elenco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ACTOR_ac_id" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Elenco" />
+        </set>
+    </class>
+</hibernate-mapping>

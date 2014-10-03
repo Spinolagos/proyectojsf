@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Menu Cine</title>
+    </h:head>
+    <h:body>
+        MENU PRINCIPAL DEL CINE
+        <h:form> 
+
+            <h:panelGrid columns="1" border="0">
+                <h:commandButton value="Ciudades   " action="#{ciudadBeans.ir()}"/>
+                <h:commandButton value="Actores    " action="#{actorBeans.ir()}"/>
+                <h:commandButton value="Directores " action="#{directorBeans.ir()}"/>
+                <h:commandButton value="Cine       " action="#{cineBeans.ir()}"/>
+                <h:commandButton value="Pelicula   " action="#{peliculaBeans.ir()}"/>
+                <h:commandButton value="Estreno    "/>   
+                <h:commandButton value="Elenco     "/>
+                
+                
+            </h:panelGrid>  
+        </h:form>
+
+    </h:body>
+</html>
+

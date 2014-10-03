@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:form>
+            <h:dataTable border="1" 
+                         value="#{cineBeans.lista2}" 
+                         var="elemento" 
+                         binding="#{cineBeans.tabla2}" >
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="id"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.cdId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{elemento.cdNombre}"/>
+                </h:column> 
+                 <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Opciones"></h:outputText>
+                    </f:facet>           
+                     <h:commandLink value="Agregar Cine"  action="#{cineBeans.agregar}" />
+                     
+                </h:column>
+            </h:dataTable>    
+        </h:form>
+     <h:form> 
+         <h:commandButton value="Ver" action="#{cineBeans.VerC()}"/>
+         <h:commandLink value="Volver"  action="#{cineBeans.volver()}" />
+        </h:form> 
+     <h:form>
+         
+            <h:messages errorStyle="color:red"></h:messages>
+            <h:panelGrid columns="2" border="0">
+                
+                <h:outputText value="Ciudad id"/>
+                <h:inputText title="ingrese id ciudad" 
+                             id="ciud"
+                             disabled="true"
+                             required="true"
+                             label="El id ciudad"
+                             requiredMessage="Debe ingresar El id ciudad" 
+                             value="#{cineBeans.cdId}">
+                    <f:validateLength minimum="1"/>       
+                </h:inputText>   
+                
+                <h:outputText value="cine"/>
+                <h:inputText title="ingrese cine" 
+                             id="peli" 
+                             required="true"
+                             label="El cine"
+                             requiredMessage="Debe ingresar cine" 
+                             value="#{cineBeans.cnNombre}">
+                    <f:validateLength minimum="1"/>       
+                </h:inputText>   
+                <h:commandButton value="Enviar" action="#{cineBeans.enviar()}"/>
+              
+            </h:panelGrid>
+        </h:form>  
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-sep-2014 16:43:37 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Clases.Elenco" table="elenco" catalog="pro">
+        <composite-id name="id" class="Clases.ElencoId">
+            <key-property name="actorAcId" type="int">
+                <column name="ACTOR_ac_id" />
+            </key-property>
+            <key-property name="peliculaPlId" type="int">
+                <column name="PELICULA_pl_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="actor" class="Clases.Actor" update="false" insert="false" fetch="select">
+            <column name="ACTOR_ac_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pelicula" class="Clases.Pelicula" update="false" insert="false" fetch="select">
+            <column name="PELICULA_pl_id" not-null="true" />
+        </many-to-one>
+        <property name="elProtagonista" type="java.lang.Boolean">
+            <column name="el_protagonista" />
+        </property>
+    </class>
+</hibernate-mapping>
