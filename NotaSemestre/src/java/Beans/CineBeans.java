@@ -151,9 +151,9 @@ public class CineBeans {
         }
     }
     
-    public String Ver() {
+    public void Ver() {
           
-           session = HibernateUtil.getSessionFactory().openSession();
+        
            Transaction t = null;
 
         try {
@@ -170,7 +170,6 @@ public class CineBeans {
             session.flush();
             session.close();
         }
-        return "cineLista.xhtml";
     }
     
     public String agregar(){
@@ -199,6 +198,7 @@ public class CineBeans {
             session.save(this.getCine());
             transaction.commit();
         }
+        Ver();
         return "cineLista.xhtml";
     } 
      

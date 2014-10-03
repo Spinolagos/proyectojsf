@@ -164,12 +164,11 @@ public class PeliculaBeans {
     
     
     public void Ver() {
-       
-           session = HibernateUtil.getSessionFactory().openSession();
-           Transaction t = null;
+            
+      Transaction t = null;
 
         try {
-            
+            t = session.beginTransaction();
             String consulta = "from Pelicula";
             Query query = session.createQuery(consulta);
             lista = query.list();
@@ -181,7 +180,7 @@ public class PeliculaBeans {
         } finally {
             session.flush();
             session.close();
-        }  
+        } 
     }
     
       public String agregar(){
@@ -244,6 +243,7 @@ public class PeliculaBeans {
         return "peliculaLista.xhtml";
      } 
       public String ir(){
+         VerD();
         return "pelicula.xhtml";
      } 
       
@@ -258,6 +258,8 @@ public class PeliculaBeans {
        public void limpiar() {
        
     }
+       
+       
 }
 
     
